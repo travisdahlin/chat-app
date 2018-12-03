@@ -1,10 +1,9 @@
-const express = require("express");
-const socket = require("socket.io");
-// import express from "express";
+import express from "express";
+import socket from "socket.io";
 
 const app = express();
 const port = 5000;
-const server = app.listen(port, function() {
+const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
@@ -12,14 +11,14 @@ app.use(express.static("public"));
 
 const io = socket(server);
 
-io.on("connection", function(socket) {
+io.on("connection", socket => {
   console.log("made socket conneciton", socket.id);
 
-  socket.on("chat", function(data) {
+  socket.on("chat", data => {
     io.sockets.emit("chat", data);
   });
 
-  socket.on("typing", function(data) {
+  socket.on("typing", data => {
     socket.broadcast.emit("typing", data);
   });
 });
