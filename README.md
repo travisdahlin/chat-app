@@ -2,7 +2,7 @@ Chat Application using websockets
 
 https://socket.io/
 
-Run with nodemoan:
+Run with nodemon:
 
 ```bash
 npm run start
